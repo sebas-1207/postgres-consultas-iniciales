@@ -1,0 +1,142 @@
+-- Insertar datos en la tabla departamento
+INSERT INTO departamento (nombre) VALUES
+('Departamento de Matemáticas'),
+('Departamento de Historia'),
+('Departamento de Ciencias Naturales'),
+('Departamento de Lenguas'),
+('Departamento de Educación Física'),
+('Departamento de Informática'),
+('Departamento de Música'),
+('Departamento de Arte'),
+('Departamento de Geografía'),
+('Departamento de Filosofía'),
+('Departamento de Biología'),
+('Departamento de Química'),
+('Departamento de Física'),
+('Departamento de Literatura'),
+('Departamento de Economía');
+
+-- Insertar datos en la tabla profesor
+INSERT INTO profesor (id_departamento) VALUES
+(1), (2), (3), (4), (5), (6), (7), (8), (9), (10),
+(11), (12), (13), (14), (15);
+
+-- Insertar datos en la tabla persona (alumnos)
+INSERT INTO persona (nif, nombre, apellido1, apellido2, ciudad, direccion, telefono, fecha_nacimiento, sexo, tipo) VALUES
+('12345678A', 'Juan', 'Pérez', 'García', 'Madrid', 'Calle Mayor 1', '123456789', '1995-05-10', 'Masculino', 'Alumno'),
+('23456789B', 'María', 'López', 'Martínez', 'Barcelona', 'Calle Ronda 2', '987654321', '1996-07-15', 'Femenino', 'Alumno'),
+('34567890C', 'Antonio', 'González', 'Sánchez', 'Sevilla', 'Calle Sevilla 3', '654321987', '1994-03-20', 'Masculino', 'Alumno'),
+('45678901D', 'Laura', 'Martín', 'Gómez', 'Valencia', 'Calle Valencia 4', '321987654', '1997-09-25', 'Femenino', 'Alumno'),
+('56789012E', 'Pedro', 'Rodríguez', 'Fernández', 'Málaga', 'Calle Málaga 5', '789456123', '1993-11-30', 'Masculino', 'Alumno'),
+('67890123F', 'Ana', 'Hernández', 'Pérez', 'Alicante', 'Calle Alicante 6', '147258369', '1998-01-05', 'Femenino', 'Alumno'),
+('78901234G', 'David', 'García', 'González', 'Bilbao', 'Calle Bilbao 7', '258369147', '1992-12-15', 'Masculino', 'Alumno'),
+('89012345H', 'Sara', 'Fernández', 'Hernández', 'Granada', 'Calle Granada 8', '369147258', '1999-04-10', 'Femenino', 'Alumno'),
+('90123456I', 'Javier', 'Pérez', 'Martínez', 'Valencia', 'Calle Valencia 9', '456123789', '1991-08-20', 'Masculino', 'Alumno'),
+('01234567J', 'Elena', 'Gómez', 'Fernández', 'Sevilla', 'Calle Sevilla 10', '147258369', '2000-06-30', 'Femenino', 'Alumno'),
+('12345678K', 'Luis', 'Martínez', 'Sánchez', 'Madrid', 'Calle Mayor 11', '258369147', '1990-02-25', 'Masculino', 'Alumno'),
+('23456789L', 'Carmen', 'González', 'García', 'Barcelona', 'Calle Ronda 12', '369147258', '2001-10-15', 'Femenino', 'Alumno'),
+('34567890M', 'Francisco', 'Hernández', 'Martín', 'Valencia', 'Calle Valencia 13', '456123789', '1989-04-05', 'Masculino', 'Alumno'),
+('45678901N', 'Isabel', 'Martínez', 'López', 'Málaga', 'Calle Málaga 14', '147258369', '2002-12-20', 'Femenino', 'Alumno'),
+('56789012O', 'Miguel', 'García', 'Hernández', 'Alicante', 'Calle Alicante 15', '258369147', '1988-07-10', 'Masculino', 'Alumno'),
+('11111111A', 'Juan', 'Pérez', 'García', 'Madrid', 'Calle Mayor 1', '123456789', '1970-05-10', 'Masculino', 'Profesor'),
+('22222222B', 'María', 'López', 'Martínez', 'Barcelona', 'Calle Ronda 2', '987654321', '1980-07-15', 'Femenino', 'Profesor'),
+('33333333C', 'Antonio', 'González', 'Sánchez', 'Sevilla', 'Calle Sevilla 3', '654321987', '1975-03-20', 'Masculino', 'Profesor'),
+('44444444D', 'Laura', 'Martín', 'Gómez', 'Valencia', 'Calle Valencia 4', '321987654', '1985-09-25', 'Femenino', 'Profesor'),
+('55555555E', 'Pedro', 'Rodríguez', 'Fernández', 'Málaga', 'Calle Málaga 5', '789456123', '1973-11-30', 'Masculino', 'Profesor'),
+('66666666F', 'Ana', 'Hernández', 'Pérez', 'Alicante', 'Calle Alicante 6', '147258369', '1988-01-05', 'Femenino', 'Profesor'),
+('77777777G', 'David', 'García', 'González', 'Bilbao', 'Calle Bilbao 7', '258369147', '1965-12-15', 'Masculino', 'Profesor'),
+('88888888H', 'Sara', 'Fernández', 'Hernández', 'Granada', 'Calle Granada 8', '369147258', '1978-04-10', 'Femenino', 'Profesor'),
+('99999999I', 'Javier', 'Pérez', 'Martínez', 'Valencia', 'Calle Valencia 9', '456123789', '1960-08-20', 'Masculino', 'Profesor'),
+('00000000J', 'Elena', 'Gómez', 'Fernández', 'Sevilla', 'Calle Sevilla 10', '147258369', '1990-06-30', 'Femenino', 'Profesor'),
+('10101010K', 'Luis', 'Martínez', 'Sánchez', 'Madrid', 'Calle Mayor 11', '258369147', '1962-02-25', 'Masculino', 'Profesor'),
+('12121212L', 'Carmen', 'González', 'García', 'Barcelona', 'Calle Ronda 12', '369147258', '1983-10-15', 'Femenino', 'Profesor'),
+('13131313M', 'Francisco', 'Hernández', 'Martín', 'Valencia', 'Calle Valencia 13', '456123789', '1955-04-05', 'Masculino', 'Profesor'),
+('14141414N', 'Isabel', 'Martínez', 'López', 'Málaga', 'Calle Málaga 14', '147258369', '1989-12-20', 'Femenino', 'Profesor'),
+('15151515O', 'Miguel', 'García', 'Hernández', 'Alicante', 'Calle Alicante 15', '258369147', '1977-07-10', 'Masculino', 'Profesor');
+
+-- Insertar datos en la tabla curso_escolar
+INSERT INTO curso_escolar (anyo_inicio, anyo_fin) VALUES
+('2022-09-01', '2023-06-30'),
+('2023-09-01', '2024-06-30'),
+('2024-09-01', '2025-06-30'),
+('2025-09-01', '2026-06-30'),
+('2026-09-01', '2027-06-30'),
+('2027-09-01', '2028-06-30'),
+('2028-09-01', '2029-06-30'),
+('2029-09-01', '2030-06-30'),
+('2030-09-01', '2031-06-30'),
+('2031-09-01', '2032-06-30'),
+('2032-09-01', '2033-06-30'),
+('2033-09-01', '2034-06-30'),
+('2034-09-01', '2035-06-30'),
+('2035-09-01', '2036-06-30'),
+('2036-09-01', '2037-06-30');
+
+-- Insertar datos en la tabla grado
+INSERT INTO grado (nombre) VALUES
+('Grado en Matemáticas'),
+('Grado en Historia'),
+('Grado en Ciencias Naturales'),
+('Grado en Lenguas'),
+('Grado en Educación Física'),
+('Grado en Informática'),
+('Grado en Música'),
+('Grado en Arte'),
+('Grado en Geografía'),
+('Grado en Filosofía'),
+('Grado en Biología'),
+('Grado en Química'),
+('Grado en Física'),
+('Grado en Literatura'),
+('Grado en Economía');
+
+-- Insertar datos en la tabla asignatura
+INSERT INTO asignatura (nombre, creditos, tipo, curso, cuatrimestre, id_profesor, id_grado) VALUES
+('Matemáticas I', 6.0, 'Basica', 1, 1, 1, 1),
+('Matemáticas II', 6.0, 'Basica', 1, 2, 1, 1),
+('Historia Antigua', 6.0, 'Basica', 1, 1, 2, 2),
+('Historia Moderna', 6.0, 'Basica', 1, 2, 2, 2),
+('Biología Celular', 6.0, 'Basica', 1, 1, 3, 3),
+('Biología Molecular', 6.0, 'Basica', 1, 2, 3, 3),
+('Inglés I', 6.0, 'Basica', 1, 1, 4, 4),
+('Inglés II', 6.0, 'Basica', 1, 2, 4, 4),
+('Educación Física I', 6.0, 'Basica', 1, 1, 5, 5),
+('Educación Física II', 6.0, 'Basica', 1, 2, 5, 5),
+('Informática Básica', 6.0, 'Basica', 1, 1, 6, 6),
+('Programación Avanzada', 6.0, 'Basica', 1, 2, 6, 6),
+('Música Clásica', 6.0, 'Basica', 1, 1, 7, 7),
+('Música Moderna', 6.0, 'Basica', 1, 2, 7, 7),
+('Arte Contemporáneo', 6.0, 'Basica', 1, 1, 8, 8),
+('Arte Clásico', 6.0, 'Basica', 1, 2, 8, 8),
+('Geografía Humana', 6.0, 'Basica', 1, 1, 9, 9),
+('Geografía Física', 6.0, 'Basica', 1, 2, 9, 9),
+('Filosofía Antigua', 6.0, 'Basica', 1, 1, 10, 10),
+('Filosofía Moderna', 6.0, 'Basica', 1, 2, 10, 10),
+('Biología Avanzada', 6.0, 'Basica', 1, 1, 11, 11),
+('Biología Aplicada', 6.0, 'Basica', 1, 2, 11, 11),
+('Química Orgánica', 6.0, 'Basica', 1, 1, 12, 12),
+('Química Inorgánica', 6.0, 'Basica', 1, 2, 12, 12),
+('Física Clásica', 6.0, 'Basica', 1, 1, 13, 13),
+('Física Moderna', 6.0, 'Basica', 1, 2, 13, 13),
+('Literatura Universal', 6.0, 'Basica', 1, 1, 14, 14),
+('Literatura Contemporánea', 6.0, 'Basica', 1, 2, 14, 14),
+('Economía Básica', 6.0, 'Basica', 1, 1, 15, 15),
+('Economía Aplicada', 6.0, 'Basica', 1, 2, 15, 15);
+
+-- Insertar datos en la tabla alumno_se_matricula_asignatura
+INSERT INTO alumno_se_matricula_asignatura (id_alumno, id_asignatura, id_curso_escolar) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1),
+(4, 4, 1),
+(5, 5, 1),
+(6, 6, 1),
+(7, 7, 1),
+(8, 8, 1),
+(9, 9, 1),
+(10, 10, 1),
+(11, 11, 1),
+(12, 12, 1),
+(13, 13, 1),
+(14, 14, 1),
+(15, 15, 1);
