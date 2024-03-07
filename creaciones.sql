@@ -1,18 +1,19 @@
 CREATE TABLE departamento(
-	id SERIAL PRIMARY KEY,
+	id INT PRIMARY KEY,
 	nombre VARCHAR(50)
 );
 
 CREATE TABLE profesor(
-	id_profesor SERIAL PRIMARY KEY,
+	id INT PRIMARY KEY,
+	id_profesor INT,
 	id_departamento INT
 );
 
-CREATE TYPE valoresSexo AS ENUM ('Masculino', 'Femenino');
-CREATE TYPE valoresTipo AS ENUM ('Profesor', 'Alumno');
+CREATE TYPE valoresSexo AS ENUM ('H', 'M');
+CREATE TYPE valoresTipo AS ENUM ('profesor', 'alumno');
 
 CREATE TABLE persona(
-    id SERIAL PRIMARY KEY,
+    id INT PRIMARY KEY,
     nif VARCHAR(9),
     nombre VARCHAR(25),
     apellido1 VARCHAR(50),
@@ -26,20 +27,20 @@ CREATE TABLE persona(
 );
 
 CREATE TABLE curso_escolar(
-    id SERIAL PRIMARY KEY,
-    anyo_inicio DATE,
-    anyo_fin DATE
+    id INT PRIMARY KEY,
+    anyo_inicio INTEGER,
+    anyo_fin INTEGER
 );
 
 CREATE TABLE grado(
-    id SERIAL PRIMARY KEY,
+    id INT PRIMARY KEY,
     nombre VARCHAR(100)
 );
 
-CREATE TYPE valoresAsignatura AS ENUM ('Basica', 'Obligatoria', 'Optativa');
+CREATE TYPE valoresAsignatura AS ENUM ('básica', 'obligatoria', 'optativa');
 
 CREATE TABLE asignatura(
-    id SERIAL PRIMARY KEY,
+    id INT PRIMARY KEY,
     nombre VARCHAR(100),
     creditos FLOAT,
     tipo valoresAsignatura,

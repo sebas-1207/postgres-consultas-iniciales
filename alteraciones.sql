@@ -3,10 +3,15 @@ ADD CONSTRAINT fk_departamento_profesor
 FOREIGN KEY (id_departamento)
 REFERENCES departamento(id);
 
+ALTER TABLE profesor
+ADD CONSTRAINT fk_persona_profesor
+FOREIGN KEY (id_profesor)
+REFERENCES persona(id);
+
 ALTER TABLE asignatura
 ADD CONSTRAINT fk_profesor_asignatura
 FOREIGN KEY (id_profesor)
-REFERENCES profesor(id_profesor);
+REFERENCES profesor(id);
 
 ALTER TABLE asignatura
 ADD CONSTRAINT fk_grado_asignatura

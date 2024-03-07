@@ -1,0 +1,71 @@
+/* Consulta 3.1 */
+SELECT apellido1, apellido2, nombre
+FROM persona
+WHERE tipo = 'alumno'
+ORDER BY apellido1, apellido2, nombre;
+   
+/* Consulta 3.2 */
+SELECT nombre, apellido1, apellido2
+FROM persona
+WHERE tipo = 'alumno' AND telefono IS NULL;
+	 
+/* Consulta 3.3 */
+SELECT nombre, apellido1, apellido2
+FROM persona
+WHERE tipo = 'alumno' AND EXTRACT(YEAR FROM fecha_nacimiento) = 1999;
+
+/* Consulta 3.4 */
+SELECT nombre, apellido1, apellido2
+FROM persona
+WHERE tipo = 'profesor' AND telefono IS NULL AND nif LIKE '%K';
+
+/* Consulta 3.5 */
+SELECT nombre
+FROM asignatura
+WHERE curso = 3 AND cuatrimestre = 1 AND id_grado = 7;
+
+/* Consulta 4.1 */
+SELECT DISTINCT persona.*
+FROM persona
+JOIN alumno_se_matricula_asignatura ON persona.id = alumno_se_matricula_asignatura.id_alumno
+JOIN asignatura ON alumno_se_matricula_asignatura.id_asignatura = asignatura.id
+JOIN grado ON asignatura.id_grado = grado.id
+WHERE persona.tipo = 'alumno' AND sexo ='M' AND grado.nombre= 'Grado en Ingeniería Informática (Plan 2015)';
+
+/* Consulta 4.2 */
+SELECT asignatura.nombre
+FROM asignatura
+JOIN grado ON asignatura.id_grado = grado.id
+WHERE grado.nombre = 'Grado en Ingeniería Informática (Plan 2015)';
+
+/* Consulta 4.3 */
+SELECT persona.nombre, departamento.nombre
+FROM persona, profesor, departamento
+WHERE persona.id = profesor.id_profesor
+AND profesor.id_departamento = departamento.id
+AND persona.tipo = 'profesor'
+ORDER BY persona.apellido1, persona.apellido2, persona.nombre;
+
+/* Consulta 4.4 */
+SELECT asignatura.nombre, curso_escolar.anyo_inicio, curso_escolar.anyo_fin
+FROM alumno_se_matricula_asignatura
+JOIN persona ON alumno_se_matricula_asignatura.id_alumno = persona.id
+JOIN curso_escolar ON alumno_se_matricula_asignatura.id_curso_escolar = curso_escolar.id
+JOIN asignatura ON alumno_se_matricula_asignatura.id_asignatura = asignatura.id
+WHERE persona.nif = '26902806M';
+
+/* Consulta 4.5 */
+SELECT DISTINCT departamento.nombre
+FROM departamento
+JOIN profesor ON departamento.id = profesor.id_departamento
+JOIN asignatura ON profesor.id = asignatura.id_profesor
+JOIN grado ON asignatura.id_grado = grado.id
+WHERE grado.nombre = 'Grado en Ingeniería Informática (Plan 2015)';
+
+/* Consulta 4.6 */
+SELECT DISTINCT persona.nombre 
+FROM persona
+JOIN alumno_se_matricula_asignatura ON persona.id = alumno_se_matricula_asignatura.id_alumno
+JOIN curso_escolar ON alumno_se_matricula_asignatura.id_curso_escolar = curso_escolar.id
+WHERE anyo_inicio = '2018' AND anyo_fin = '2019';
+
