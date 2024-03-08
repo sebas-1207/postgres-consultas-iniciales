@@ -69,3 +69,143 @@ JOIN alumno_se_matricula_asignatura ON persona.id = alumno_se_matricula_asignatu
 JOIN curso_escolar ON alumno_se_matricula_asignatura.id_curso_escolar = curso_escolar.id
 WHERE anyo_inicio = '2018' AND anyo_fin = '2019';
 
+/* Consulta 5.1 */
+SELECT departamento.nombre, persona.apellido1, persona.apellido2, persona.nombre
+FROM persona
+LEFT JOIN profesor ON persona.id = profesor.id_profesor
+LEFT JOIN departamento ON profesor.id_departamento = departamento.id
+WHERE persona.tipo = 'profesor'
+ORDER BY departamento.nombre, persona.apellido1, persona.apellido2, persona.nombre;
+
+/* Consulta 5.2 */
+SELECT persona.nombre
+FROM persona
+LEFT JOIN profesor ON persona.id = profesor.id_profesor
+WHERE profesor.id IS NULL AND persona.tipo = 'profesor';
+
+/* Consulta 5.3 */
+SELECT departamento.nombre
+FROM departamento
+LEFT JOIN profesor ON departamento.id = profesor.id_departamento
+WHERE profesor.id IS NULL;
+
+/* Consulta 5.4 */
+SELECT persona.nombre, persona.apellido1, persona.apellido2
+FROM persona
+LEFT JOIN profesor ON persona.id = profesor.id_profesor
+LEFT JOIN asignatura ON profesor.id = asignatura.id_profesor
+WHERE asignatura.id IS NULL
+AND persona.tipo = 'profesor';
+
+/* Consulta 5.5 */
+SELECT asignatura.nombre
+FROM asignatura
+LEFT JOIN profesor ON asignatura.id_profesor = profesor.id
+WHERE profesor.id IS NULL;
+
+/* Consulta 5.6 */
+SELECT DISTINCT departamento.nombre 
+FROM departamento
+INNER JOIN profesor ON departamento.id = profesor.id_departamento
+INNER JOIN asignatura ON profesor.id = asignatura.id_profesor
+LEFT JOIN alumno_se_matricula_asignatura ON asignatura.id = alumno_se_matricula_asignatura.id_asignatura
+WHERE alumno_se_matricula_asignatura.id_asignatura IS NULL;
+
+/* Consulta 6.1 */
+SELECT COUNT(*) AS total_alumnas
+FROM persona
+WHERE tipo = 'alumno' AND sexo = 'M';
+
+/* Consulta 6.2 */
+SELECT COUNT(*) 
+FROM persona
+WHERE tipo = 'alumno' AND EXTRACT(YEAR FROM fecha_nacimiento) = 2005;
+
+/* Consulta 6.3 */
+SELECT departamento.nombre, COUNT(profesor.id)
+FROM departamento
+JOIN profesor ON departamento.id = profesor.id_departamento
+GROUP BY departamento.nombre
+ORDER BY COUNT(profesor.id) DESC;
+
+/* Consulta 6.4 */
+SELECT departamento.nombre, COUNT(profesor.id_departamento)
+FROM departamento
+LEFT JOIN profesor ON departamento.id = profesor.id_departamento
+GROUP BY departamento.nombre;
+
+/* Consulta 6.5 */
+SELECT grado.nombre, COUNT(asignatura.id_grado) AS num_asignaturas
+FROM grado
+LEFT JOIN asignatura ON grado.id = asignatura.id_grado
+GROUP BY grado.nombre
+ORDER BY num_asignaturas DESC;
+
+/* Consulta 6.6 */
+SELECT grado.nombre, COUNT(asignatura.id_grado) AS num_asignaturas
+FROM grado
+JOIN asignatura ON grado.id = asignatura.id_grado
+GROUP BY grado.nombre
+HAVING COUNT(asignatura.id_grado) > 40;
+
+/* Consulta 6.7 */
+SELECT grado.nombre, asignatura.tipo, SUM(asignatura.creditos)
+FROM grado
+JOIN asignatura ON grado.id = asignatura.id_grado
+GROUP BY grado.nombre, asignatura.tipo
+ORDER BY SUM(asignatura.creditos) DESC;
+
+/* Consulta 6.8 */
+SELECT curso_escolar.anyo_inicio, COUNT(persona.id)
+FROM persona
+JOIN alumno_se_matricula_asignatura ON persona.id = alumno_se_matricula_asignatura.id_alumno
+LEFT JOIN asignatura ON alumno_se_matricula_asignatura.id_asignatura = asignatura.id
+JOIN curso_escolar ON alumno_se_matricula_asignatura.id_curso_escolar = curso_escolar.id
+WHERE persona.tipo = 'alumno'
+GROUP BY curso_escolar.anyo_inicio;
+
+/* Consulta 6.9 */
+SELECT persona.id, persona.nombre, persona.apellido1, persona.apellido2, COUNT(asignatura.id) AS numero_asignaturas
+FROM profesor
+LEFT JOIN asignatura ON profesor.id = asignatura.id_profesor
+JOIN persona ON profesor.id_profesor = persona.id
+WHERE persona.tipo = 'profesor'
+GROUP BY persona.id, persona.nombre, persona.apellido1, persona.apellido2
+ORDER BY numero_asignaturas DESC;
+
+
+/* Consulta 7.1 */
+SELECT *
+FROM persona
+WHERE fecha_nacimiento = (SELECT MIN(fecha_nacimiento) FROM persona WHERE tipo = 'alumno');
+
+/* Consulta 7.2 */
+SELECT persona.id, persona.nombre, persona.apellido1, persona.apellido2
+FROM persona
+WHERE persona.tipo = 'profesor'
+AND persona.id NOT IN (SELECT id_profesor FROM profesor WHERE id_departamento IS NOT NULL);
+
+/* Consulta 7.3 */
+SELECT departamento.id, departamento.nombre
+FROM departamento
+WHERE departamento.id NOT IN (SELECT id_departamento FROM profesor);
+
+/* Consulta 7.4 */
+SELECT persona.id, persona.nombre, persona.apellido1, persona.apellido2
+FROM persona
+JOIN profesor ON persona.id = profesor.id_profesor
+WHERE profesor.id_departamento IS NOT NULL
+AND persona.id NOT IN (SELECT id_profesor FROM asignatura);
+
+/* Consulta 7.5 */
+SELECT asignatura.nombre
+FROM asignatura
+WHERE asignatura.id_profesor IS NULL;
+
+/* Consulta 7.6 */
+SELECT DISTINCT departamento.nombre
+FROM departamento 
+LEFT JOIN profesor  ON departamento.id = profesor.id_departamento
+LEFT JOIN asignatura ON asignatura.id_profesor = profesor.id_profesor
+LEFT JOIN alumno_se_matricula_asignatura ON alumno_se_matricula_asignatura.id_asignatura = asignatura.id
+WHERE alumno_se_matricula_asignatura.id_curso_escolar IS NULL AND asignatura.curso IS NULL;
